@@ -1,0 +1,48 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "arrow-spacing": ["error"],
+    "arrow-parens": ["error", "as-needed"],
+    "block-scoped-var": ["error"],
+    "block-spacing": ["error", "always"],
+    "camelcase": ["error"],
+    "comma-dangle": ["error", "never"],
+    "eol-last": ["error", "always"],
+    "indent": ["error", 2],
+    "jsx-quotes": ["error", "prefer-double"],
+    "key-spacing": ["error", { "beforeColon": false }],
+    "linebreak-style": ["error", "unix"],
+    "no-console": ["warn"],
+    "no-duplicate-imports": ["error"],
+    "no-multiple-empty-lines": ["error", {"max": 1}],
+    "no-trailing-spaces": ["error"],
+    "no-var": ["error"],
+    "no-whitespace-before-property": ["error"],
+    "object-shorthand": ["error", "always"],
+    "prefer-arrow-callback": ["error"],
+    "prefer-const": ["error"],
+    "prefer-spread": ["error"],
+    "quotes": ["error", "single"],
+    "react/jsx-uses-react": ["error"],
+    "react/jsx-uses-vars": ["error"],
+    "react/react-in-jsx-scope": ["error"],
+    "rest-spread-spacing": ["error"],
+    "semi": ["error", "always"]
+  }
+}

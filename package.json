@@ -1,0 +1,89 @@
+{
+  "name": "voltronflamingo",
+  "version": "0.1.0",
+  "author": "O'Reilly Media, Inc",
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.27.3",
+    "del-cli": "^0.2.1",
+    "enzyme": "^2.8.0",
+    "es6-promise": "^4.1.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "fetch-mock": "^5.10.0",
+    "file-loader": "^0.11.1",
+    "isomorphic-fetch": "^2.2.1",
+    "jsdom": "^9.12.0",
+    "mock-css-modules": "^1.0.0",
+    "nyc": "^10.2.0",
+    "postcss-cssnext": "^2.10.0",
+    "postcss-extend": "^1.0.5",
+    "postcss-filter-gradient": "^0.2.6",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^1.3.3",
+    "postcss-url": "^6.0.3",
+    "prop-types": "^15.5.8",
+    "raw-loader": "^0.5.1",
+    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.5.4",
+    "sinon": "^2.1.0",
+    "style-loader": "^0.14.1",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "ava": {
+    "babel": "inherit",
+    "concurrency": 5,
+    "files": [
+      "static/js/src/**/*.test.js"
+    ],
+    "require": [
+      "babel-register",
+      "mock-css-modules"
+    ],
+    "babel": "inherit"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "static/js/src/**/*.js",
+      "static/js/src/**/*.jsx"
+    ],
+    "extension": [
+      ".js",
+      ".jsx"
+    ],
+    "exclude": [
+      "coverage/*",
+      "static/js/src/**/*.test.js"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ]
+  },
+  "scripts": {
+    "reinstall": "rm -rf node_modules && npm cache clear && npm install",
+    "test": "nyc ava --verbose",
+    "eslint": "eslint --config .eslintrc.json static/js/src/**/**/*.{js,jsx}",
+    "clean": "del .nyc_output coverage dist test-report*.xml",
+    "build": "npm run clean && webpack -p --display-error-details",
+    "watch": "npm run clean && webpack --watch"
+  }
+}
