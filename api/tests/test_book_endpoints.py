@@ -72,7 +72,7 @@ class TestBookEndpoints(APITestCase):
         expected_books = Book.objects.count() + 1
         response = self.client.post(self.list_url, data=self.full_data)
         assert response.status_code == status.HTTP_201_CREATED
-        assert Book.objects.count() == Book.objects.count() + 1
+        assert Book.objects.count() == expected_books
 
     def test_list_book(self):
         """GET /api/book/ should list all books"""
