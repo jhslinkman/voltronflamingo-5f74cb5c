@@ -10,9 +10,18 @@ const book = shape({
   title: string.isRequired
 });
 
+const publisher = shape({
+  pk: number.isRequired,
+  name: string.isRequired
+});
+
 const bookList = arrayOf(book);
+
+const publisherList = arrayOf(publisher);
 
 export default {
   book,
-  bookList
+  bookList,
+  publisher,
+  publisherList
 };
