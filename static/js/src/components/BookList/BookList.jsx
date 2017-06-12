@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from '../PropTypes';
-import BookItem from '../bookItem/BookItem';
+import BookItem from '../BookItem/BookItem';
 import styles from './BookList.css';
 
 const BookList = props => {

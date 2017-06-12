@@ -2,7 +2,7 @@ import React from 'react';
 import test from 'ava';
 import { shallow } from 'enzyme';
 import BookList from './BookList';
-import BookItem from '../bookItem/BookItem';
+import BookItem from '../BookItem/BookItem';
 
 const books = [
   {
