@@ -45,7 +45,7 @@ test('should pass a book object to each BookItem', t => {
 
   const bookItems = getWrapper().find(BookItem);
   bookItems.forEach((item, i) => {
-    const expected = {'book': books[i]};
+    const expected = {'book': books[i], rateBook: undefined};
     t.deepEqual(item.props(), expected);
   });
 });
