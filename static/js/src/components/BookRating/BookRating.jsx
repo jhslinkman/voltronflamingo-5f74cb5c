@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookRating = ({ rating, bookPk, bookRating, onClick }) => (
+const BookRating = ({ rating, bookPk, onClick }) => (
   <span className="rating--star">
     <a href="#"
       onClick={() => onClick(bookPk, rating)}>

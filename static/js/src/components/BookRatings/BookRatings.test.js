@@ -35,5 +35,5 @@ test('should pass a publisher object to each BookRating', t => {
 
 test('should render the average rating if the book passed the "rated" prop', t => {
   const bookRatings = getWrapper(true);
-  t.is(bookRatings.text(), `Average rating: ${book.average_rating}`)
+  t.is(bookRatings.text(), `Average rating: ${book.average_rating}`);
 });

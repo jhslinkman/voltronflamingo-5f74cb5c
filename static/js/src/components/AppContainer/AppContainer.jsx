@@ -44,7 +44,7 @@ export default class AppContainer extends Component {
   rateBook(bookPk, rating) {
     postRateBook(this.props.baseApiUrl, bookPk, this.props.userPk, rating)
       .then(() => {
-        return getBookDetail(this.props.baseApiUrl, bookPk)
+        return getBookDetail(this.props.baseApiUrl, bookPk);
       })
       .then(response => response.json())
       .then(book => {
@@ -52,7 +52,7 @@ export default class AppContainer extends Component {
         const bookInd = books.map(b => b.pk).indexOf(bookPk);
         book.rated = true;
         books[bookInd] = book;
-        this.setState({books: books});
+        this.setState({ books });
       });
   }
 

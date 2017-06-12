@@ -26,6 +26,6 @@ const BookRatings = props => {
       { ratings }
     </div>
   );
-}
+};
 
 export default BookRatings;
