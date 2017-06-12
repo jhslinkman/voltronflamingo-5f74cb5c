@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from books.models import Book, Publisher, Author
+from books.models import Book, Publisher, Author, Rating
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -33,3 +33,8 @@ class PublisherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publisher
         fields = ('pk', 'name',)
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = ('pk', 'book', 'user', 'rating', )

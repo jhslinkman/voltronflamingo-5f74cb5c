@@ -2,8 +2,14 @@ from django.contrib.auth.models import User
 
 from rest_framework import viewsets
 
-from api.serializers import UserSerializer, BookSerializer, PublisherSerializer, AuthorSerializer
-from books.models import Book, Publisher, Author
+from api.serializers import (
+    UserSerializer,
+    BookSerializer,
+    PublisherSerializer,
+    AuthorSerializer,
+    RatingSerializer
+)
+from books.models import Book, Publisher, Author, Rating
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -36,3 +42,10 @@ class PublisherViewSet(viewsets.ModelViewSet):
     """
     queryset = Publisher.objects.all()
     serializer_class = PublisherSerializer
+
+class RatingViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows ratings to be viewed or edited.
+    """
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
