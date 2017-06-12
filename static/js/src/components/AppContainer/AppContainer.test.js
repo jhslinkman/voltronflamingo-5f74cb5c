@@ -26,10 +26,22 @@ const books = [
   }
 ];
 
+const publishers = [
+  {
+    'pk': 1,
+    'name': 'Publisher 1'
+  },
+  {
+    'pk': 2,
+    'name': 'Publisher 2'
+  }
+];
+
 const baseApiUrl = 'http://www.example.com';
 
 test.beforeEach(() => {
-  fetchMock.mock('*', books);
+  fetchMock.mock('end:books/', books);
+  fetchMock.mock('end:publishers/', publishers);
 });
 
 test.afterEach(() => {
@@ -85,6 +97,22 @@ test('should get book data when mounted', t => {
   return new Promise(resolve => {
     setTimeout(() => {
       t.deepEqual(instance.state.books, expected);
+      resolve();
+    }, 10);
+  });
+});
+
+test('should get publisher data when mounted', t => {
+  t.plan(1);
+
+  const expected = publishers;
+  const instance = getWrapper().instance();
+
+  instance.componentWillMount();
+
+  return new Promise(resolve => {
+    setTimeout(() => {
+      t.deepEqual(instance.state.publishers, expected);
       resolve();
     }, 10);
   });
