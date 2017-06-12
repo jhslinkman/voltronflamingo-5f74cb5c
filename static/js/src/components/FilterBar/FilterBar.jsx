@@ -1,11 +1,15 @@
 import React from 'react';
 import styles from './FilterBar.css';
 
-const FilterBar = () => {
+const FilterBar = ({ onClickFilter }) => {
   return (
     <ul className={styles.nav}>
-      <li>Books</li>
-      <li>Publishers</li>
+      <li className="books">
+        <a onClick={() => onClickFilter('books')}>Books</a>
+      </li>
+      <li className="publishers">
+        <a onClick={() => onClickFilter('publishers')}>Publishers</a>
+      </li>
     </ul>
   );
 };
