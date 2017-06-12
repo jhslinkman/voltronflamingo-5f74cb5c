@@ -105,3 +105,17 @@ class TestBookEndpoints(APITestCase):
         assert len(response.data) == expected_books
         for book, response_item in zip(Book.objects.all(), response.data):
             assert response_item['pk'] == book.pk
+
+    def test_list_book_with_ratings(self):
+        """GET /api/book/ should return the average rating for each book"""
+        user = User.objects.create_user(username="A reader",
+                                        email="hi@example.com",
+                                        password="h0wdy**")
+        rating = random.randint(1, 5)
+        Rating.objects.create(rating=rating,
+                              book=self.book,
+                              user=user)
+
+        response = self.client.get(self.list_url)
+
+        self.assertAlmostEqual(response.data[0]["average_rating"], rating)
