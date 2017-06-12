@@ -21,3 +21,7 @@ class TestBooks(TestCase):
         Rating.objects.create(book=self.book, user=self.user, rating=5)
 
         self.assertAlmostEqual(self.book.average_rating, expected_rating)
+
+    def test_average_rating_with_no_ratings(self):
+        """book.average_rating should be None if the book has no ratings"""
+        assert self.book.average_rating is None
