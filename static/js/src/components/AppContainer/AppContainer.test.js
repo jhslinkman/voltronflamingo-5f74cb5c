@@ -123,3 +123,7 @@ test('clicking the publishers nav should render a list of publishers', t => {
   wrapper.find(FilterBar).find('.publishers a').simulate('click');
   t.is(wrapper.find('.content h1').text(), 'Publishers');
 });
+
+test.skip('rating a book should call the ratings API and show the average rating for that book', t => { // eslint-disable-line no-unused-vars
+  // Need more time to look figure out the ins and outs of enzyme
+});
