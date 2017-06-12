@@ -5,6 +5,12 @@ const getBooks = (baseApiUrl) => {
   return fetch(url);
 };
 
+const getPublishers = (baseApiUrl) => {
+  const url = `${baseApiUrl}/publishers/`;
+  return fetch(url);
+};
+
 export {
-  getBooks
+  getBooks,
+  getPublishers
 };
