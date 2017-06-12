@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import BookList from '../bookList/BookList';
 import PublisherList from '../publisherList/PublisherList';
 import FilterBar from '../filterBar/FilterBar';
-import {getBooks} from '../../services/api';
+import {getBooks, getPublishers} from '../../services/api';
 
 export default class AppContainer extends Component {
   constructor() {
@@ -21,6 +21,7 @@ export default class AppContainer extends Component {
 
   componentWillMount() {
     this.getBookData();
+    this.getPublisherData();
   }
 
   getBookData () {
@@ -29,6 +30,14 @@ export default class AppContainer extends Component {
     }).then(data => {
       this.setState({'books': data});
     });
+  }
+
+  getPublisherData() {
+    getPublishers(this.props.baseApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({'publishers': data});
+      });
   }
 
   render() {
