@@ -12,10 +12,11 @@ export default class AppContainer extends Component {
       'books': [],
       'publishers': []
     };
+    this.onClickFilter = this.onClickFilter.bind(this);
   }
 
   onClickFilter(filter) {
-    console.log(filter);
+    this.setState({showBooks: filter === 'books'});
   }
 
   componentWillMount() {
