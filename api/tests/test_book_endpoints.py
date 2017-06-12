@@ -4,12 +4,13 @@ from __future__ import unicode_literals
 import logging
 import random
 
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from books.models import Book, Author, Publisher
+from books.models import Book, Author, Publisher, Rating
 
 
 logger = logging.getLogger(__name__)
@@ -41,6 +42,19 @@ class TestBookEndpoints(APITestCase):
         assert response.data['title'] == self.book.title
         assert response.data['publisher'] == self.book.publisher.pk
         assert response.data['authors'] == [a.pk for a in self.book.authors.all()]
+        assert response.data['average_rating'] == None
+
+    def test_get_book_with_ratings(self):
+        """GET /api/book/\d+/ should return the average rating of the book"""
+        user = User.objects.create_user(username="A reader",
+                                        email="hi@example.com",
+                                        password="h0wdy**")
+        rating = random.randint(1, 5)
+        Rating.objects.create(rating=rating,
+                              book=self.book,
+                              user=user)
+        response = self.client.get(self.detail_url)
+        self.assertAlmostEqual(response.data['average_rating'], rating)
 
     def test_patch_book(self):
         """PATCH /api/book/\d+/ should update the book"""
