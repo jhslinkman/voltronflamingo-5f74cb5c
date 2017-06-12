@@ -35,7 +35,6 @@ test.afterEach(() => {
   fetchMock.restore();
 });
 
-
 function getWrapper() {
   return shallow(<AppContainer baseApiUrl={baseApiUrl}/>);
 }
@@ -78,7 +77,7 @@ test('should get book data when mounted', t => {
 
   instance.componentWillMount();
 
-  new Promise(resolve => {
+  return new Promise(resolve => {
     setTimeout(() => {
       t.deepEqual(instance.state, expected);
       resolve();

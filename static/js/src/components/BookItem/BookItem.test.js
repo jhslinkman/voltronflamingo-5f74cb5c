@@ -18,7 +18,7 @@ function getWrapper(overrides = {}) {
 }
 
 test('should include the title of the book', t => {
-  const expected = 'A zure Dream';
+  const expected = 'Azure Dream';
   const title = getWrapper().find('.t-book-title').text();
   t.is(title, expected);
 });

@@ -36,12 +36,12 @@ test('should give list the `list` class', t => {
 
 test('should include a BookItem for each item in the books prop', t => {
   const expected = books.length;
-  const count = getWrapper().find(BookList).length;
+  const count = getWrapper().find(BookItem).length;
   t.is(count, expected);
 });
 
 test('should pass a book object to each BookItem', t => {
-  t.plan(books.length + 1);
+  t.plan(books.length);
 
   const bookItems = getWrapper().find(BookItem);
   bookItems.forEach((item, i) => {
