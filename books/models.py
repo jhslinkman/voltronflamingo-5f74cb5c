@@ -17,6 +17,13 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
+    @property
+    def average_rating(self):
+        """Return the average rating for this book."""
+        rating_sum = sum(r.rating for r in self.ratings.all())
+        num_ratings = self.ratings.count()
+        return float(rating_sum) / num_ratings
+
 
 class Publisher(models.Model):
     name = models.CharField(max_length=255)
