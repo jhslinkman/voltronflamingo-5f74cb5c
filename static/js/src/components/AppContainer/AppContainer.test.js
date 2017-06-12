@@ -1,7 +1,8 @@
+import 'jsdom-global/register';
 import React from 'react';
 import test from 'ava';
 import fetchMock from 'fetch-mock';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import AppContainer from './AppContainer';
 import BookList from '../bookList/BookList';
 import FilterBar from '../filterBar/FilterBar';
@@ -39,8 +40,12 @@ function getWrapper() {
   return shallow(<AppContainer baseApiUrl={baseApiUrl}/>);
 }
 
+function getMountedWrapper() {
+  return mount(<AppContainer baseApiUrl={baseApiUrl} />);
+}
+
 test('should have the correct default state', t => {
-  const expected = {'showBooks': true, 'books': []};
+  const expected = {'showBooks': true, 'books': [], 'publishers': []};
   const state = getWrapper().state();
   t.deepEqual(state, expected);
 });
@@ -72,15 +77,21 @@ test('should not include a BookList if showBooks is false', t => {
 test('should get book data when mounted', t => {
   t.plan(1);
 
-  const expected = {'showBooks': true, 'books': books};
+  const expected = books;
   const instance = getWrapper().instance();
 
   instance.componentWillMount();
 
   return new Promise(resolve => {
     setTimeout(() => {
-      t.deepEqual(instance.state, expected);
+      t.deepEqual(instance.state.books, expected);
       resolve();
     }, 10);
   });
+});
+
+test('clicking the publishers nav should render a list of publishers', t => {
+  const wrapper = getMountedWrapper();
+  wrapper.find(FilterBar).find('.publishers a').simulate('click');
+  t.is(wrapper.find('.content h1').text(), 'Publishers');
 });

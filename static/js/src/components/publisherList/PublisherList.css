@@ -1,0 +1,6 @@
+@import '../main.css';
+
+.list li {
+    display: inline-block;
+    padding-left: 50px;
+}

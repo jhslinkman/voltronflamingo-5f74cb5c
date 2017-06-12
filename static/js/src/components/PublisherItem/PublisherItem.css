@@ -1,0 +1,26 @@
+@import '../main.css';
+
+.item {
+  height: 250px;
+  width: 450px;
+}
+
+.body {
+  color: var(--red);
+  overflow:hidden;
+  font-size: 20px;
+  line-height: 1em;
+}
+
+.body p {
+  color: var(--iron);
+}
+
+.cover {
+  float: left;
+  margin-right: 20px;
+}
+
+.cover img{
+  display:block;
+}

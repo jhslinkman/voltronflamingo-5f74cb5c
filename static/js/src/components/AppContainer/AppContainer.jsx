@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import BookList from '../bookList/BookList';
+import PublisherList from '../publisherList/PublisherList';
 import FilterBar from '../filterBar/FilterBar';
 import {getBooks} from '../../services/api';
 
@@ -8,8 +9,13 @@ export default class AppContainer extends Component {
     super();
     this.state = {
       'showBooks': true,
-      'books': []
+      'books': [],
+      'publishers': []
     };
+  }
+
+  onClickFilter(filter) {
+    console.log(filter);
   }
 
   componentWillMount() {
@@ -27,8 +33,8 @@ export default class AppContainer extends Component {
   render() {
     return (
       <div>
-        <FilterBar/>
-        {this.state.showBooks && <BookList books={this.state.books}/>}
+        <FilterBar onClickFilter={this.onClickFilter} />
+        {this.state.showBooks ? <BookList books={this.state.books}/> : <PublisherList publishers={this.state.publishers} />}
       </div>
     );
   }

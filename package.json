@@ -20,7 +20,8 @@
     "fetch-mock": "^5.10.0",
     "file-loader": "^0.11.1",
     "isomorphic-fetch": "^2.2.1",
-    "jsdom": "^9.12.0",
+    "jsdom": "^10.0.0",
+    "jsdom-global": "^3.0.2",
     "mock-css-modules": "^1.0.0",
     "nyc": "^10.2.0",
     "postcss-cssnext": "^2.10.0",
@@ -56,8 +57,7 @@
     "require": [
       "babel-register",
       "mock-css-modules"
-    ],
-    "babel": "inherit"
+    ]
   },
   "nyc": {
     "all": true,

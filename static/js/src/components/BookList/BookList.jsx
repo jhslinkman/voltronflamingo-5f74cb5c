@@ -7,7 +7,7 @@ const BookList = props => {
   const {books} = props;
 
   return (
-    <div>
+    <div className="content">
       <h1>Books</h1>
       <ol className={styles.list}>
         {books.map(book =>
