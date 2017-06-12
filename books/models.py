@@ -20,8 +20,10 @@ class Book(models.Model):
     @property
     def average_rating(self):
         """Return the average rating for this book."""
-        rating_sum = sum(r.rating for r in self.ratings.all())
         num_ratings = self.ratings.count()
+        if num_ratings == 0:
+            return None
+        rating_sum = sum(r.rating for r in self.ratings.all())
         return float(rating_sum) / num_ratings
 
 
